@@ -25,6 +25,7 @@ SELECT type,
 Count (*) as total_Content
 from [dbo].[netflix_titles]
 GROUP BY type
+'''
 
 ### 2. Find the Most Common Rating for Movies and TV Shows
 
