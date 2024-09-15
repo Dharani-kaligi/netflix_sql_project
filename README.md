@@ -20,13 +20,13 @@ Dataset Link:https://www.kaggle.com/datasets/shivamb/netflix-shows?resource=down
 
 ### 1. Count the Number of Movies vs TV Shows
 
-'''SQL
+```SQL
 
 SELECT type,
 Count (*) as total_Content
 from [dbo].[netflix_titles]
 GROUP BY type
-'''
+```
 
 ### 2. Find the Most Common Rating for Movies and TV Shows
 
