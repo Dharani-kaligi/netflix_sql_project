@@ -20,7 +20,8 @@ Dataset Link:https://www.kaggle.com/datasets/shivamb/netflix-shows?resource=down
 
 ### 1. Count the Number of Movies vs TV Shows
 
-'''sql
+'''SQL
+
 SELECT type,
 Count (*) as total_Content
 from [dbo].[netflix_titles]
@@ -222,9 +223,9 @@ GROUP BY Category
 - Categorized content based on specific keywords for better understanding.
 - Helps in analyzing the nature and types of content available on Netflix.
 
-  ## This analysis provides a comprehensive view of Netflix's content and can help inform content strategy and decision-making.
+  ### This analysis provides a comprehensive view of Netflix's content and can help inform content strategy and decision-making.
 
- ## Author - Dharani Kaligi
+ ### Author - Dharani Kaligi
 This project is part of my portfolio, showcasing the SQL skills essential for data Scientist & Analyst roles. If you have any questions, feedback, or would like to collaborate, feel free to get in touch!
 
 
