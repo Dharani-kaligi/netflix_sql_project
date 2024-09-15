@@ -16,7 +16,7 @@ The data for this project is sourced from the Kaggle dataset:
 
 Dataset Link:https://www.kaggle.com/datasets/shivamb/netflix-shows?resource=download 
 
-# Business Problems and Solutions
+## Business Problems and Solutions
 
 ### 1. Count the Number of Movies vs TV Shows
 
@@ -30,6 +30,7 @@ GROUP BY type
 
 ### 2. Find the Most Common Rating for Movies and TV Shows
 
+```sql
 SELECT 
     type, 
     rating
@@ -45,68 +46,76 @@ FROM
 ) AS RankedRatings
 WHERE 
     ranking = 1;
+```
 
 ### 3. List All Movies Released in a Specific Year (e.g., 2020)
 
+```sql
 select * from [dbo].[netflix_titles]
 
 SELECT
   * 
   FROM [dbo].[netflix_titles]
   WHERE type='Movie' AND release_year = '2020'
-
+```
 
 ### 4. Find the Top 5 Countries with the Most Content on Netflix
 
+```sql
 SELECT TOP 5
     country,
     COUNT(*) AS content_count
 FROM [dbo].[netflix_titles]
 GROUP BY country
 ORDER BY content_count DESC;
-
+```
 
 ### 5. Identify the Longest Movie
 
+```sql
 Select top 1 title, duration
 from [dbo].[netflix_titles]
 WHERE type = 'Movie' 
 ORDER BY duration DESC
-
+```
 
 ### 6. Find Content Added in the Last 5 Years
 
+```sql
 SELECT *
 FROM [dbo].[netflix_titles]
 WHERE date_added >= DATEADD(YEAR, -5, GETDATE());
-
+```
 
 ### 7. Find All Movies/TV Shows by Director 'Rajiv Chilaka'
 
+```sql
 SELECT type, title, director
 FROM  [dbo].[netflix_titles]
 WHERE director LIKE '%Rajiv Chilaka%'
-
+```
 
 ### 8. List All TV Shows with More Than 5 Seasons
 
+```sql
 SELECT *
 FROM [dbo].[netflix_titles]
 WHERE type = 'TV Show' and duration like '%Season%' 
 AND duration >'5 Seasons'
+```
 
 ### 9. Count the Number of Content Items in Each Genre
 
+```sql
 SELECT listed_in, Count(title) AS No_of_Content_Items FROM
 [dbo].[netflix_titles]
 GROUP BY listed_in
 ORDER BY No_of_Content_Items DESC
-
+```
 
 ### 10.Find each year and the average numbers of content release in India on netflix.
 
--- Find each year and the average number of content releases in India on Netflix
-
+```sql
 WITH YearlyCounts AS (
     SELECT
         YEAR(CONVERT(DATE, date_added, 120)) AS release_year,
@@ -132,30 +141,34 @@ FROM
     YearlyCounts
 ORDER BY
     release_year;
-
+```
 
 ### 11. List All Movies that are Documentaries
 
+```sql
 SELECT * FROM [dbo].[netflix_titles]
 WHERE type = 'Movie' AND listed_in LIKE '%Documentaries%'
-
+```
 
 ### 12. Find All Content Without a Director
 
+```sql
 SELECT * FROM 
 [dbo].[netflix_titles]
 WHERE director IS NULL
-  
+```
 
 ### 13. Find How Many Movies Actor 'Salman Khan' Appeared in the Last 10 Years
 
-
+```sql
 SELECT * FROM
 [dbo].[netflix_titles]
 WHERE date_added >= DATEADD(YEAR, -10, GETDATE()) AND cast LIKE '%Salman Khan%'
+```
 
 ### 14. Find the Top 10 Actors Who Have Appeared in the Highest Number of Movies Produced in India
 
+```sql
 WITH ActorCounts AS (
     SELECT
         actor,
@@ -182,10 +195,11 @@ FROM
     ActorCounts
 ORDER BY 
     movie_count DESC;
-
+```
 
 ### 15. Categorize Content Based on the Presence of 'Kill' and 'Violence' Keywords
 
+```sql
 With Categorisedcontent AS(
 SELECT 
     *,
@@ -203,7 +217,7 @@ SELECT
 	  COUNT(*) AS total_content
 FROM Categorisedcontent
 GROUP BY Category
-
+```
 
 ## Findings and Conclusion
 ### Content Distribution
